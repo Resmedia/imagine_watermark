@@ -1,7 +1,7 @@
 # Imagine Watermark Settings
 
 These settings are for the GalleryBehavior app from zxbodya. 
-They are make positioning watermark depending on the size of the photo, both as newly created and on originals.
+They are make positioning watermark depending on the size photo, both as newly created and on originals.
 
 ### Settings 
 
