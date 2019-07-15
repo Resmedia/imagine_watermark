@@ -12,12 +12,6 @@ const WATERMARK = '/static/imgs/watermark.png';
 //The multiplicity of how many times you need to change the watermark if the photo is large
 const MULTIPLICITY = 3; 
 
-// Height adjustment
-const HEIGHT_AMENDMENT = 600;
-
-// Width adjustment
-const WIDTH_AMENDMENT = 140;
-
 // Watermark size adjustment
 const REDUCTION_FREQUENCY = 2;
 ```
