@@ -12,8 +12,6 @@ class Watermark
 {
     const WATERMARK = '/static/imgs/watermark.png';
     const MULTIPLICITY = 3;
-    const HEIGHT_AMENDMENT = 600;
-    const WIDTH_AMENDMENT = 140;
     const REDUCTION_FREQUENCY = 2;
 
     public static function dimensions($img, $width, $height)
@@ -23,10 +21,9 @@ class Watermark
         $wSize     = $watermark->getSize();
         $imgSize = $img->getSize();
 
-        $position = new Point(
-            $height - $wSize->getHeight() - self::HEIGHT_AMENDMENT ,
-            $width - $wSize->getWidth() + self::WIDTH_AMENDMENT
-        );
+        $currentHeight = ($height > $imgSize->getHeight() ? $imgSize->getHeight() : $height) - $wSize->getHeight();
+        // Left down
+        $position = new Point(0, $currentHeight);
 
         $corpImage = $img
             ->copy()
@@ -38,7 +35,10 @@ class Watermark
         if($dimension > self::MULTIPLICITY){
             $watermarkWidth = $wSize->getWidth() * $dimension / self::REDUCTION_FREQUENCY;
             $watermarkHeight  = $wSize->getHeight() * $dimension / self::REDUCTION_FREQUENCY;
-            $positionCenter = new Point($imgSize->getWidth() /  $dimension, $imgSize->getHeight() /  $dimension);
+            $positionCenter = new Point(
+                ($imgSize->getWidth() / $dimension),
+                ($imgSize->getHeight() / $dimension)
+            );
         } else {
             $watermarkWidth = $wSize->getWidth();
             $watermarkHeight  = $wSize->getHeight();
